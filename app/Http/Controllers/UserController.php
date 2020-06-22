@@ -17,7 +17,7 @@ public function add(){
     //获取一个表单数据
         $input=$request->except('_token');
        // dd($input);
-      $res=User::create(['username'=>$input['username'],'password'=>$input['password']]);
+      $res=User::create(['username'=>$input['username'],'password'=>md5($input['password'])]);
         //表单验证
 
         //3.添加操作

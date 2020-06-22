@@ -26,3 +26,9 @@ Route::get('user/edit/{id}','UserController@edit');
 Route::post('user/update','UserController@update');
 //用户删除路由
 Route::get('user/del/{id}','UserController@destroy');
+//============================================================
+//正式博客路由
+Route::get('admin/login','Admin\AdminLogin@login');
+
+
+
