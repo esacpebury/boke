@@ -29,6 +29,16 @@ Route::get('user/del/{id}','UserController@destroy');
 //============================================================
 //正式博客路由
 Route::get('admin/login','Admin\AdminLogin@login');
+//验证码路由
+Route::get('admin/code','Admin\AdminLogin@code');
+Route::get('/code/captcha/{tmp}', 'Admin\AdminLogin@captcha');
+//登录数据提交路由
+Route::post('admin/dologin','Admin\AdminLogin@dologin');
 
-
+//加密路由
+Route::get('admin/jiami','Admin\AdminLogin@jiami');
+//后台主页
+Route::get('admin/index','Admin\AdminLogin@index');
+////后台欢迎页
+Route::get('admin/welcome','Admin\AdminLogin@welcome');
 
