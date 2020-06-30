@@ -144,4 +144,11 @@ class AdminLogin extends Controller
     public function welcome(){
         return view('admin.welcome');
     }
+    //后台登出
+    public function logout(){
+        //清空session中的用户信息
+        session()->flush();
+
+        return redirect('admin/login');
+    }
 }
