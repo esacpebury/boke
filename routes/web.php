@@ -52,6 +52,8 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'IsLogin'],fu
     Route::get('welcome','AdminLogin@welcome');
     //后台登出路由
     Route::get('logout','AdminLogin@logout');
+    //后台用户界面相关路由
+  Route::resource('user','UserController');
 });
 
 Route::get('/code/captcha/{tmp}', 'Admin\AdminLogin@captcha');
