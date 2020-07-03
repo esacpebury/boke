@@ -27,7 +27,7 @@
             </label>
             <div class="layui-input-inline">
                 <input  type="hidden" name="uid" value="{{$user->user_id}}">
-                <input type="text" id="L_email" value="{{$user->user_name}}" name="username" required="" lay-verify="email"
+                <input type="text" id="L_email" value="{{$user->user_name}}" name="user_name" required="" lay-verify="email"
                        autocomplete="off" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">
@@ -68,9 +68,9 @@
                 var uid=$("input[name='uid']").val();
             //发异步，把数据提交给php
             $.ajax({
-                type: 'POST',
+                type: 'PUT',
                 dataType: 'json',
-                url: '/admin/user'+uid,
+                url: '/admin/user/'+uid,
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },

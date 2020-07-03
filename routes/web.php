@@ -52,8 +52,18 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'IsLogin'],fu
     Route::get('welcome','AdminLogin@welcome');
     //后台登出路由
     Route::get('logout','AdminLogin@logout');
+
+    //用户删除路由
+    Route::get('user/del','UserController@delAll');
     //后台用户界面相关路由
   Route::resource('user','UserController');
+
+
+  //角色模块
+    Route::resource('role','RoleController');
+    //角色授权路由
+    Route::get('role/auth/{id}','RoleController@auth');
+
 });
 
 Route::get('/code/captcha/{tmp}', 'Admin\AdminLogin@captcha');
