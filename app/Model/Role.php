@@ -16,4 +16,5 @@ class Role extends Model
     //public $fillable=['user_name','user_pass','email','phone'];
      public $guarded=[];
     public  $timestamps=false;
+    //添加动态属性关联权限
 }

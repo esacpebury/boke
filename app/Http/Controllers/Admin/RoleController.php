@@ -2,12 +2,23 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Model\Permission;
 use App\Model\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class RoleController extends Controller
 {
+
+
+    //获取授权图
+    public function auth($id){
+
+        //通过id获取所有的权限列表
+        $role=Role::find($id);
+        $perms=Permission::get();
+        return view('admin.role.auth');
+    }
     /**
      * Display a listing of the resource.
      *
