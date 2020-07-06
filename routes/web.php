@@ -42,10 +42,10 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function (){
     //验证码路由
     Route::get('code','AdminLogin@code');
 });
-
+Route::get('noaccess','Admin\AdminLogin@noaccess');
 
 //需要验证的界面     后台登录之后的页面
-Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'IsLogin'],function (){
+Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>['HasRole','IsLogin']],function (){
     //后台主页
     Route::get('index','AdminLogin@index');
     //后台欢迎页
@@ -61,6 +61,8 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'IsLogin'],fu
 
   //角色模块
     Route::resource('role','RoleController');
+    //处理角色授权路由
+    Route::post('role/doauth','RoleController@doAuth');
     //角色授权路由
     Route::get('role/auth/{id}','RoleController@auth');
 

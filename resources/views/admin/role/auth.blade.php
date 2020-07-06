@@ -20,14 +20,15 @@
   
   <body>
     <div class="x-body layui-anim layui-anim-up">
-        <form class="layui-form" action="{{url('admin/role')}}" method="post">
+        <form class="layui-form" action="{{url('admin/role/doauth')}}" method="post">
             {{csrf_field()}}
           <div class="layui-form-item">
               <label for="L_email" class="layui-form-label">
                   <span class="x-red">*</span>角色名称
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="L_email" name="role_name" required="" lay-verify=""
+                  <input type="hidden" name="role_id" value="{{$role->id}}">
+                  <input type="text" id="L_email" value="{{$role->role_name}}" name="role_name" required="" lay-verify=""
                   autocomplete="off" class="layui-input">
               </div>
               <div class="layui-form-mid layui-word-aux">
@@ -39,9 +40,14 @@
                     <span class="x-red">*</span>权限列表
                 </label>
                 <div class="layui-input-inline" style="width: 600px">
-                    <input type="checkbox" name="" title="1111" lay-skin="primary">
+                    @foreach($perms as $v)
+                        @if(in_array($v->id,$own_pers))
+                    <input type="checkbox" checked name="permission_id[]" title="{{$v->per_name}}" value="{{$v->id}}" lay-skin="primary">
+                        @else
+                            <input type="checkbox"  name="permission_id[]" title="{{$v->per_name}}" value="{{$v->id}}" lay-skin="primary">
 
-
+                        @endif
+                            @endforeach
                 </div>
 
 
@@ -51,7 +57,7 @@
               <label for="L_repass" class="layui-form-label">
               </label>
               <button  class="layui-btn" lay-filter="add" lay-submit="">
-                  增加
+                  授权
               </button>
           </div>
       </form>

@@ -151,4 +151,9 @@ class AdminLogin extends Controller
 
         return redirect('admin/login');
     }
+
+    //没有权限 对应的页面
+    public function  noaccess(){
+        return view('errors.noaccess');
+    }
 }
